@@ -28,6 +28,7 @@ app.get("/api/notes", (req, res) => {
     } else {
       // console out data
       console.log(data);
+      res.send(data);
     }
     // Log the request to the terminal
     console.log(`${req.method} request received to get old notes`);
@@ -58,7 +59,8 @@ app.post("/api/notes", (req, res) => {
         //update notes file
         fs.writeFile("./db/db.json", JSON.stringify(storedNotes, null, 4), (err) =>
           err ? console.log(err) : console.log("New note added successfully!")
-        );
+        )
+        res.send(data);
       }
     });
   }
